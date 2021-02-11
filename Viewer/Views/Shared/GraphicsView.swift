@@ -68,22 +68,26 @@ class UIGraphicsView : UIImageView {
                 rasterImagePtr.deinitialize(count: count)
                 rasterImagePtr.deallocate()
             }
-            rasterize(vertices, indices, numIndices, zBufferPtr, Int32(width), Int32(height), rasterImagePtr)
-                        
-            let img = UIImage(cgImage: CGImage(
-                                width: width,
-                                height: height,
-                                bitsPerComponent: 8,
-                                bitsPerPixel: 8,
-                                bytesPerRow: width,
-                                space: CGColorSpaceCreateDeviceGray(),
-                                bitmapInfo: CGBitmapInfo.byteOrderMask,
-                                provider: CGDataProvider(data: CFDataCreate(nil, rasterImagePtr, count))!,
-                                decode: nil,
-                                shouldInterpolate: true,
-                                intent: CGColorRenderingIntent.defaultIntent)!)
             
-            super.init(image: img)
+            /*
+              This function will rasterize the provided vertices and indices into the provided raster image buffer.
+              This buffer can then be used to draw into an image view.
+             */
+            rasterize(vertices, indices, numIndices, zBufferPtr, Int32(width), Int32(height), rasterImagePtr)
+
+            super.init(image: UIImage(
+                cgImage: CGImage(
+                    width: width,
+                    height: height,
+                    bitsPerComponent: 8,
+                    bitsPerPixel: 8,
+                    bytesPerRow: width,
+                    space: CGColorSpaceCreateDeviceGray(),
+                    bitmapInfo: CGBitmapInfo.byteOrderMask,
+                    provider: CGDataProvider(data: CFDataCreate(nil, rasterImagePtr, count))!,
+                    decode: nil,
+                    shouldInterpolate: true,
+                    intent: CGColorRenderingIntent.defaultIntent)!))
         }
     }
 
