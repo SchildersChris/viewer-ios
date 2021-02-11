@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A416D0BF72B2205427542DE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5A416B4779BFD9ED9E0A22D6 /* .gitignore */; };
+		833334D325D5F3330055E35B /* Rasterizer in Frameworks */ = {isa = PBXBuildFile; productRef = 833334D225D5F3330055E35B /* Rasterizer */; };
 		833EE42C25D55B85009153C4 /* ViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833EE42B25D55B85009153C4 /* ViewerApp.swift */; };
 		833EE42E25D55B85009153C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833EE42D25D55B85009153C4 /* ContentView.swift */; };
 		833EE43025D55B87009153C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833EE42F25D55B87009153C4 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833334D325D5F3330055E35B /* Rasterizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +126,7 @@
 			);
 			name = Viewer;
 			packageProductDependencies = (
-				833334C425D5E1AF0055E35B,
+				833334D225D5F3330055E35B /* Rasterizer */,
 			);
 			productName = Viewer;
 			productReference = 833EE42825D55B85009153C4 /* Viewer.app */;
@@ -154,7 +156,7 @@
 			);
 			mainGroup = 833EE41F25D55B85009153C4;
 			packageReferences = (
-				833334C325D5E1AF0055E35B,
+				833334D125D5F3330055E35B /* XCRemoteSwiftPackageReference "rasterizer" */,
 			);
 			productRefGroup = 833EE42925D55B85009153C4 /* Products */;
 			projectDirPath = "";
@@ -376,20 +378,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		833334C325D5E1AF0055E35B = {
+		833334D125D5F3330055E35B /* XCRemoteSwiftPackageReference "rasterizer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SchildersChris/rasterizer.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.1;
+				kind = exactVersion;
+				version = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		833334C425D5E1AF0055E35B = {
+		833334D225D5F3330055E35B /* Rasterizer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 833334C325D5E1AF0055E35B;
+			package = 833334D125D5F3330055E35B /* XCRemoteSwiftPackageReference "rasterizer" */;
 			productName = Rasterizer;
 		};
 /* End XCSwiftPackageProductDependency section */

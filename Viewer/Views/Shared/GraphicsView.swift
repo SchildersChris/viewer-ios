@@ -7,7 +7,6 @@
 
 import SwiftUI
 import UIKit
-import CoreGraphics
 import Rasterizer
 
 struct GraphicsView : UIViewRepresentable {
@@ -50,24 +49,23 @@ class UIGraphicsView : UIImageView {
         
         let numIndices: UInt32 = 12
         
-        let width: Int = 500;
-        let height: Int = 500;
-        let components: Int = 3;
+        let width: Int = 100;
+        let height: Int = 100;
         
         let count = width * height;
-        let rasterByteCount = count * components
         
         do {
             let zBufferPtr = UnsafeMutablePointer<Float>.allocate(capacity: count)
             zBufferPtr.initialize(repeating: Float.greatestFiniteMagnitude, count: count)
             
-            let rasterImagePtr = UnsafeMutablePointer<UInt8>.allocate(capacity: rasterByteCount)
-            
+            let rasterImagePtr = UnsafeMutablePointer<UInt8>.allocate(capacity: count)
+            rasterImagePtr.initialize(repeating: 0, count: count)
+
             defer {
                 zBufferPtr.deinitialize(count: count)
                 zBufferPtr.deallocate()
                 
-                rasterImagePtr.deinitialize(count: rasterByteCount)
+                rasterImagePtr.deinitialize(count: count)
                 rasterImagePtr.deallocate()
             }
             rasterize(vertices, indices, numIndices, zBufferPtr, Int32(width), Int32(height), rasterImagePtr)
@@ -80,12 +78,11 @@ class UIGraphicsView : UIImageView {
                                 bytesPerRow: width,
                                 space: CGColorSpaceCreateDeviceGray(),
                                 bitmapInfo: CGBitmapInfo.byteOrderMask,
-                                provider: CGDataProvider(data: CFDataCreate(nil, rasterImagePtr, rasterByteCount))!,
+                                provider: CGDataProvider(data: CFDataCreate(nil, rasterImagePtr, count))!,
                                 decode: nil,
                                 shouldInterpolate: true,
-                                intent: CGColorRenderingIntent.defaultIntent)!, scale: 3, orientation: .up)
+                                intent: CGColorRenderingIntent.defaultIntent)!)
             
-            img.resizableImage(withCapInsets: UIEdgeInsets.init(), resizingMode: .stretch)
             super.init(image: img)
         }
     }
