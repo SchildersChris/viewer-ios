@@ -10,9 +10,11 @@ import UIKit
 import Rasterizer
 
 struct GraphicsView : UIViewRepresentable {
+    let width: Int;
+    let height: Int;
     
     func makeUIView(context: Context) -> UIGraphicsView {
-        return UIGraphicsView()
+        return UIGraphicsView(width, height)
     }
     
     func updateUIView(_ uiView: UIGraphicsView, context: Context) {
@@ -21,7 +23,7 @@ struct GraphicsView : UIViewRepresentable {
 }
 
 class UIGraphicsView : UIImageView {
-    init() {
+    init(_ width: Int, _ height: Int) {
         let vertices:[Vector3] = [
             Vector3(x: -0.5, y: -0.5, z: -0.5),
             Vector3(x: 0.5, y: -0.5, z: -0.5),
@@ -48,10 +50,6 @@ class UIGraphicsView : UIImageView {
         ]
         
         let numIndices: UInt32 = 12
-        
-        let width: Int = 100;
-        let height: Int = 100;
-        
         let count = width * height;
         
         do {

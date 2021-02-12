@@ -9,14 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-        GraphicsView().frame(width: 200, height: 200)
+        Text("Hello world!").padding()
+        GraphicsView(width: 300, height: 300)
+            .frame(width: 300, height: 300)
+            .cornerRadius(10)
+        Spacer()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+        }
     }
 }
