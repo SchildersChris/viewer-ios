@@ -7,24 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A41684F03D4A6B5522D207B /* ObjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416351710D04F5486A5E35 /* ObjectListView.swift */; };
+		5A416B199AD2EDF632BF129C /* ObjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416CE03AF328367FF22335 /* ObjectDetailView.swift */; };
+		5A416B44F319E0BE43D3343E /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416C1B50B374C12D74F613 /* ObjectModel.swift */; };
 		5A416D0BF72B2205427542DE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5A416B4779BFD9ED9E0A22D6 /* .gitignore */; };
-		833334D325D5F3330055E35B /* Rasterizer in Frameworks */ = {isa = PBXBuildFile; productRef = 833334D225D5F3330055E35B /* Rasterizer */; };
 		833EE42C25D55B85009153C4 /* ViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833EE42B25D55B85009153C4 /* ViewerApp.swift */; };
-		833EE42E25D55B85009153C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833EE42D25D55B85009153C4 /* ContentView.swift */; };
 		833EE43025D55B87009153C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833EE42F25D55B87009153C4 /* Assets.xcassets */; };
 		833EE43325D55B87009153C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833EE43225D55B87009153C4 /* Preview Assets.xcassets */; };
-		833EE44225D55D6C009153C4 /* GraphicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833EE44125D55D6C009153C4 /* GraphicsView.swift */; };
+		836FE62125DF114D005D694D /* Rasterizer in Frameworks */ = {isa = PBXBuildFile; productRef = 836FE62025DF114D005D694D /* Rasterizer */; };
+		83B1352E25D859920037DE06 /* GraphicsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1352D25D859920037DE06 /* GraphicsImageView.swift */; };
+		83B1353F25D987910037DE06 /* ObjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1353E25D987910037DE06 /* ObjectListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A416351710D04F5486A5E35 /* ObjectListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectListView.swift; sourceTree = "<group>"; };
 		5A416B4779BFD9ED9E0A22D6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
+		5A416C1B50B374C12D74F613 /* ObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
+		5A416CE03AF328367FF22335 /* ObjectDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetailView.swift; sourceTree = "<group>"; };
 		833EE42825D55B85009153C4 /* Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Viewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		833EE42B25D55B85009153C4 /* ViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewerApp.swift; sourceTree = "<group>"; };
-		833EE42D25D55B85009153C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		833EE42F25D55B87009153C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		833EE43225D55B87009153C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		833EE43425D55B87009153C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		833EE44125D55D6C009153C4 /* GraphicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsView.swift; sourceTree = "<group>"; };
+		83B1352D25D859920037DE06 /* GraphicsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsImageView.swift; sourceTree = "<group>"; };
+		83B1353E25D987910037DE06 /* ObjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				833334D325D5F3330055E35B /* Rasterizer in Frameworks */,
+				836FE62125DF114D005D694D /* Rasterizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,15 +48,9 @@
 		5A416070C1EE0F5107167634 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				83B1353E25D987910037DE06 /* ObjectListViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		5A416A854826913BA7F3B3C7 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		833EE41F25D55B85009153C4 = {
@@ -73,13 +73,13 @@
 		833EE42A25D55B85009153C4 /* Viewer */ = {
 			isa = PBXGroup;
 			children = (
+				83AC240F25D746F20098A27D /* Model */,
 				833EE43B25D55BC7009153C4 /* Views */,
 				833EE42B25D55B85009153C4 /* ViewerApp.swift */,
 				833EE42F25D55B87009153C4 /* Assets.xcassets */,
 				833EE43425D55B87009153C4 /* Info.plist */,
 				833EE43125D55B87009153C4 /* Preview Content */,
 				5A416070C1EE0F5107167634 /* ViewModels */,
-				5A416A854826913BA7F3B3C7 /* Services */,
 			);
 			path = Viewer;
 			sourceTree = "<group>";
@@ -95,16 +95,25 @@
 		833EE43B25D55BC7009153C4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				833EE42D25D55B85009153C4 /* ContentView.swift */,
-				833EE44025D55D23009153C4 /* Shared */,
+				83B1353A25D85E470037DE06 /* Shared */,
+				5A416CE03AF328367FF22335 /* ObjectDetailView.swift */,
+				5A416351710D04F5486A5E35 /* ObjectListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		833EE44025D55D23009153C4 /* Shared */ = {
+		83AC240F25D746F20098A27D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				833EE44125D55D6C009153C4 /* GraphicsView.swift */,
+				5A416C1B50B374C12D74F613 /* ObjectModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		83B1353A25D85E470037DE06 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				83B1352D25D859920037DE06 /* GraphicsImageView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -126,7 +135,7 @@
 			);
 			name = Viewer;
 			packageProductDependencies = (
-				833334D225D5F3330055E35B /* Rasterizer */,
+				836FE62025DF114D005D694D /* Rasterizer */,
 			);
 			productName = Viewer;
 			productReference = 833EE42825D55B85009153C4 /* Viewer.app */;
@@ -156,7 +165,7 @@
 			);
 			mainGroup = 833EE41F25D55B85009153C4;
 			packageReferences = (
-				833334D125D5F3330055E35B /* XCRemoteSwiftPackageReference "rasterizer" */,
+				836FE61F25DF114D005D694D /* XCRemoteSwiftPackageReference "rasterizer" */,
 			);
 			productRefGroup = 833EE42925D55B85009153C4 /* Products */;
 			projectDirPath = "";
@@ -185,9 +194,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				833EE42E25D55B85009153C4 /* ContentView.swift in Sources */,
-				833EE44225D55D6C009153C4 /* GraphicsView.swift in Sources */,
+				83B1352E25D859920037DE06 /* GraphicsImageView.swift in Sources */,
+				83B1353F25D987910037DE06 /* ObjectListViewModel.swift in Sources */,
 				833EE42C25D55B85009153C4 /* ViewerApp.swift in Sources */,
+				5A416B199AD2EDF632BF129C /* ObjectDetailView.swift in Sources */,
+				5A41684F03D4A6B5522D207B /* ObjectListView.swift in Sources */,
+				5A416B44F319E0BE43D3343E /* ObjectModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,20 +390,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		833334D125D5F3330055E35B /* XCRemoteSwiftPackageReference "rasterizer" */ = {
+		836FE61F25DF114D005D694D /* XCRemoteSwiftPackageReference "rasterizer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SchildersChris/rasterizer.git";
 			requirement = {
-				kind = exactVersion;
-				version = 1.0.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		833334D225D5F3330055E35B /* Rasterizer */ = {
+		836FE62025DF114D005D694D /* Rasterizer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 833334D125D5F3330055E35B /* XCRemoteSwiftPackageReference "rasterizer" */;
+			package = 836FE61F25DF114D005D694D /* XCRemoteSwiftPackageReference "rasterizer" */;
 			productName = Rasterizer;
 		};
 /* End XCSwiftPackageProductDependency section */

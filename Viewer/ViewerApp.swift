@@ -11,7 +11,13 @@ import SwiftUI
 struct ViewerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ObjectListView()
         }
     }
 }
+
+//extension Resolver: ResolverRegistering {
+//    public static func registerAllServices() {
+//
+//    }
+//}
