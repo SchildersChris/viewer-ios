@@ -17,10 +17,10 @@ struct ObjectListView: View {
                     NavigationLink(destination: ObjectDetailView(object: object)) {
                         Text(object.name)
                     }
+                }.onAppear {
+                    viewModel.loadObjects()
                 }
-            }.navigationTitle(Text("Objects")).onAppear {
-                viewModel.loadObjects()
-            }
-        }
+            }.navigationBarTitle("Objects")
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
