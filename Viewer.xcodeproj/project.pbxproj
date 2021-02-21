@@ -7,20 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A4167226FCF0C1B55F5E669 /* DisplayObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4162DD9C40FAD0F0865BFC /* DisplayObserver.swift */; };
 		5A41684F03D4A6B5522D207B /* ObjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416351710D04F5486A5E35 /* ObjectListView.swift */; };
 		5A416B199AD2EDF632BF129C /* ObjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416CE03AF328367FF22335 /* ObjectDetailView.swift */; };
 		5A416B44F319E0BE43D3343E /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416C1B50B374C12D74F613 /* ObjectModel.swift */; };
+		5A416CC6E1F632EA8F92A58D /* DisplayObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416529A874E693FB2A0027 /* DisplayObservable.swift */; };
 		5A416D0BF72B2205427542DE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5A416B4779BFD9ED9E0A22D6 /* .gitignore */; };
+		5A416E76DF136A6A711E3B1D /* GraphicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41620A73A1BD4F73CCBCC0 /* GraphicsViewController.swift */; };
 		833EE42C25D55B85009153C4 /* ViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833EE42B25D55B85009153C4 /* ViewerApp.swift */; };
 		833EE43025D55B87009153C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833EE42F25D55B87009153C4 /* Assets.xcassets */; };
 		833EE43325D55B87009153C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833EE43225D55B87009153C4 /* Preview Assets.xcassets */; };
-		836FE62125DF114D005D694D /* Rasterizer in Frameworks */ = {isa = PBXBuildFile; productRef = 836FE62025DF114D005D694D /* Rasterizer */; };
-		83B1352E25D859920037DE06 /* GraphicsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1352D25D859920037DE06 /* GraphicsImageView.swift */; };
 		83B1353F25D987910037DE06 /* ObjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1353E25D987910037DE06 /* ObjectListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A41620A73A1BD4F73CCBCC0 /* GraphicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsViewController.swift; sourceTree = "<group>"; };
+		5A4162DD9C40FAD0F0865BFC /* DisplayObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayObserver.swift; sourceTree = "<group>"; };
 		5A416351710D04F5486A5E35 /* ObjectListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectListView.swift; sourceTree = "<group>"; };
+		5A416529A874E693FB2A0027 /* DisplayObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayObservable.swift; sourceTree = "<group>"; };
 		5A416B4779BFD9ED9E0A22D6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 		5A416C1B50B374C12D74F613 /* ObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
 		5A416CE03AF328367FF22335 /* ObjectDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetailView.swift; sourceTree = "<group>"; };
@@ -29,7 +33,6 @@
 		833EE42F25D55B87009153C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		833EE43225D55B87009153C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		833EE43425D55B87009153C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83B1352D25D859920037DE06 /* GraphicsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsImageView.swift; sourceTree = "<group>"; };
 		83B1353E25D987910037DE06 /* ObjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -38,7 +41,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				836FE62125DF114D005D694D /* Rasterizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +53,16 @@
 				83B1353E25D987910037DE06 /* ObjectListViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5A416DFB762788DF73AF394C /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				5A41620A73A1BD4F73CCBCC0 /* GraphicsViewController.swift */,
+				5A416529A874E693FB2A0027 /* DisplayObservable.swift */,
+				5A4162DD9C40FAD0F0865BFC /* DisplayObserver.swift */,
+			);
+			path = Graphics;
 			sourceTree = "<group>";
 		};
 		833EE41F25D55B85009153C4 = {
@@ -113,7 +125,7 @@
 		83B1353A25D85E470037DE06 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				83B1352D25D859920037DE06 /* GraphicsImageView.swift */,
+				5A416DFB762788DF73AF394C /* Graphics */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -135,7 +147,7 @@
 			);
 			name = Viewer;
 			packageProductDependencies = (
-				836FE62025DF114D005D694D /* Rasterizer */,
+				836FE62025DF114D005D694D,
 			);
 			productName = Viewer;
 			productReference = 833EE42825D55B85009153C4 /* Viewer.app */;
@@ -165,7 +177,7 @@
 			);
 			mainGroup = 833EE41F25D55B85009153C4;
 			packageReferences = (
-				836FE61F25DF114D005D694D /* XCRemoteSwiftPackageReference "rasterizer" */,
+				836FE61F25DF114D005D694D,
 			);
 			productRefGroup = 833EE42925D55B85009153C4 /* Products */;
 			projectDirPath = "";
@@ -194,12 +206,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83B1352E25D859920037DE06 /* GraphicsImageView.swift in Sources */,
 				83B1353F25D987910037DE06 /* ObjectListViewModel.swift in Sources */,
 				833EE42C25D55B85009153C4 /* ViewerApp.swift in Sources */,
 				5A416B199AD2EDF632BF129C /* ObjectDetailView.swift in Sources */,
 				5A41684F03D4A6B5522D207B /* ObjectListView.swift in Sources */,
 				5A416B44F319E0BE43D3343E /* ObjectModel.swift in Sources */,
+				5A416E76DF136A6A711E3B1D /* GraphicsViewController.swift in Sources */,
+				5A416CC6E1F632EA8F92A58D /* DisplayObservable.swift in Sources */,
+				5A4167226FCF0C1B55F5E669 /* DisplayObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +404,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		836FE61F25DF114D005D694D /* XCRemoteSwiftPackageReference "rasterizer" */ = {
+		836FE61F25DF114D005D694D = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SchildersChris/rasterizer.git";
 			requirement = {
@@ -401,9 +415,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		836FE62025DF114D005D694D /* Rasterizer */ = {
+		836FE62025DF114D005D694D = {
 			isa = XCSwiftPackageProductDependency;
-			package = 836FE61F25DF114D005D694D /* XCRemoteSwiftPackageReference "rasterizer" */;
+			package = 836FE61F25DF114D005D694D;
 			productName = Rasterizer;
 		};
 /* End XCSwiftPackageProductDependency section */
