@@ -12,6 +12,13 @@ struct GraphicsViewController : UIViewControllerRepresentable {
     let object: ObjectModel
     var zoom: Binding<Float>
 
+    init(_ width: Int, _ height: Int, _ object: ObjectModel, _ zoom: Binding<Float>) {
+        self.width = width
+        self.height = height
+        self.object = object
+        self.zoom = zoom
+    }
+
     func makeUIViewController(
             context: UIViewControllerRepresentableContext<GraphicsViewController>
     ) -> UIGraphicsViewController  {
@@ -30,16 +37,16 @@ class UIGraphicsViewController : UIViewController, DisplayObserver {
     private let width: Int
     private let height: Int
 
-    private let indices: Array<UInt32>
-    private let vertices: Array<Vector3>
+    private let indices: [UInt32]
+    private let vertices: [Vector3]
 
     private var zBuffer: Array<Float>
-    private var rasterImage: Array<UInt8>
+    private var rasterImage: CFMutableData
 
     private var rotation: Float
     private var zoom: Binding<Float>
 
-    init(_ zoom: Binding<Float>, _ width: Int, _ height: Int, _ indices: Array<UInt32>, _ vertices: Array<Vector3>) {
+    init(_ zoom: Binding<Float>, _ width: Int, _ height: Int, _ indices: [UInt32], _ vertices: [Vector3]) {
         self.width = width
         self.height = height
         let count = width * height
@@ -47,7 +54,10 @@ class UIGraphicsViewController : UIViewController, DisplayObserver {
         self.indices = indices
         self.vertices = vertices
 
-        rasterImage = Array<UInt8>(repeating: 0, count: count)
+        let size = MemoryLayout<UInt8>.size * count
+        rasterImage = CFDataCreateMutable(kCFAllocatorDefault, size)!
+        CFDataSetLength(rasterImage, size)
+
         zBuffer = Array<Float>(repeating: Float.greatestFiniteMagnitude, count: count)
 
         rotation = 0
@@ -70,7 +80,7 @@ class UIGraphicsViewController : UIViewController, DisplayObserver {
                 bytesPerRow: width,
                 space: CGColorSpaceCreateDeviceGray(),
                 bitmapInfo: CGBitmapInfo(rawValue: 0),
-                provider: CGDataProvider(data: CFDataCreate(nil, rasterImage, rasterImage.count))!,
+                provider: CGDataProvider(data: rasterImage)!,
                 decode: nil,
                 shouldInterpolate: true,
                 intent: CGColorRenderingIntent.defaultIntent)!))
@@ -94,23 +104,23 @@ class UIGraphicsViewController : UIViewController, DisplayObserver {
                 p4: Vector4(x: 0, y: 0, z: 0, w: 1))
 
         rasterize(
-                vertices, indices,
-                UInt32(indices.count),
-                &matrix, &zBuffer,
-                UInt32(width), UInt32(height),
-                &rasterImage)
+            vertices, indices,
+            UInt32(indices.count),
+            &matrix, &zBuffer,
+            UInt32(width), UInt32(height),
+            CFDataGetMutableBytePtr(rasterImage))
 
         imageView?.image = UIImage(cgImage: CGImage(
-                width: width,
-                height: height,
-                bitsPerComponent: 8,
-                bitsPerPixel: 8,
-                bytesPerRow: width,
-                space: CGColorSpaceCreateDeviceGray(),
-                bitmapInfo: CGBitmapInfo(rawValue: 0),
-                provider: CGDataProvider(data: CFDataCreate(nil, rasterImage, rasterImage.count))!,
-                decode: nil,
-                shouldInterpolate: true,
-                intent: CGColorRenderingIntent.defaultIntent)!)
+            width: width,
+            height: height,
+            bitsPerComponent: 8,
+            bitsPerPixel: 8,
+            bytesPerRow: width,
+            space: CGColorSpaceCreateDeviceGray(),
+            bitmapInfo: CGBitmapInfo(rawValue: 0),
+            provider: CGDataProvider(data: rasterImage)!,
+            decode: nil,
+            shouldInterpolate: true,
+            intent: CGColorRenderingIntent.defaultIntent)!)
     }
 }

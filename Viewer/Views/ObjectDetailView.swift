@@ -13,17 +13,15 @@ struct ObjectDetailView: View {
     @State private var zoom: Float = 1
 
     var body: some View {
-        Text(object.name)
-        GraphicsViewController(
-                width: 300,
-                height: 300,
-                object: object,
-                zoom: $zoom)
-            .frame(width: 300, height: 300)
-            .cornerRadius(10)
+        VStack {
+            Text(object.name)
+            GraphicsViewController(300, 300, object, $zoom)
+                .frame(width: 300, height: 300)
+                .cornerRadius(10)
 
-        Slider(value: $zoom, in: 0...5, step: 0.1)
-        Text(String(format: "Current object distance level: %.1f", zoom))
+            Slider(value: $zoom, in: 0...5, step: 0.1)
+            Text(String(format: "Current object distance level: %.1f", zoom))
+        }
         Spacer()
     }
 }

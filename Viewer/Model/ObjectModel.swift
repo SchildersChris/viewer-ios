@@ -8,7 +8,7 @@
 import Foundation
 import Rasterizer
 
-struct ObjectModel : Decodable {
+final class ObjectModel : Decodable {
     let id: String
     let name: String
     let vertices: [Vector3]
@@ -19,6 +19,13 @@ struct ObjectModel : Decodable {
         case name
         case vertices
         case indices
+    }
+
+    init(_ id: String, _ name: String, _ vertices: [Vector3], _ indices: [UInt32]) {
+        self.id = id
+        self.name = name
+        self.vertices = vertices
+        self.indices = indices
     }
 
     init(from decoder: Decoder) throws {
