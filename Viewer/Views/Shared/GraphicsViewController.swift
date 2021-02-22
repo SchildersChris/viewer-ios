@@ -40,7 +40,7 @@ class UIGraphicsViewController : UIViewController, DisplayObserver {
     private let indices: [UInt32]
     private let vertices: [Vector3]
 
-    private var zBuffer: Array<Float>
+    private var zBuffer: [Float]
     private var rasterImage: CFMutableData
 
     private var rotation: Float
