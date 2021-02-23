@@ -14,10 +14,10 @@
 		5A416B44F319E0BE43D3343E /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416C1B50B374C12D74F613 /* ObjectModel.swift */; };
 		5A416D0BF72B2205427542DE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5A416B4779BFD9ED9E0A22D6 /* .gitignore */; };
 		5A416E55D5C6915E49B7537B /* DisplayObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416167632398D2E7C27195 /* DisplayObserver.swift */; };
+		833C828F25E44CFD00D61415 /* Rasterizer in Frameworks */ = {isa = PBXBuildFile; productRef = 833C828E25E44CFD00D61415 /* Rasterizer */; };
 		833EE42C25D55B85009153C4 /* ViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833EE42B25D55B85009153C4 /* ViewerApp.swift */; };
 		833EE43025D55B87009153C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833EE42F25D55B87009153C4 /* Assets.xcassets */; };
 		833EE43325D55B87009153C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833EE43225D55B87009153C4 /* Preview Assets.xcassets */; };
-		83A847DD25E43F8F003BB519 /* Rasterizer in Frameworks */ = {isa = PBXBuildFile; productRef = 83A847DC25E43F8F003BB519 /* Rasterizer */; };
 		83B1353F25D987910037DE06 /* ObjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1353E25D987910037DE06 /* ObjectListViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83A847DD25E43F8F003BB519 /* Rasterizer in Frameworks */,
+				833C828F25E44CFD00D61415 /* Rasterizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +141,7 @@
 			);
 			name = Viewer;
 			packageProductDependencies = (
-				83A847DC25E43F8F003BB519 /* Rasterizer */,
+				833C828E25E44CFD00D61415 /* Rasterizer */,
 			);
 			productName = Viewer;
 			productReference = 833EE42825D55B85009153C4 /* Viewer.app */;
@@ -171,7 +171,7 @@
 			);
 			mainGroup = 833EE41F25D55B85009153C4;
 			packageReferences = (
-				83A847DB25E43F8F003BB519 /* XCRemoteSwiftPackageReference "rasterizer" */,
+				833C828D25E44CFD00D61415 /* XCRemoteSwiftPackageReference "rasterizer" */,
 			);
 			productRefGroup = 833EE42925D55B85009153C4 /* Products */;
 			projectDirPath = "";
@@ -398,7 +398,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		83A847DB25E43F8F003BB519 /* XCRemoteSwiftPackageReference "rasterizer" */ = {
+		833C828D25E44CFD00D61415 /* XCRemoteSwiftPackageReference "rasterizer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SchildersChris/rasterizer.git";
 			requirement = {
@@ -409,9 +409,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		83A847DC25E43F8F003BB519 /* Rasterizer */ = {
+		833C828E25E44CFD00D61415 /* Rasterizer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 83A847DB25E43F8F003BB519 /* XCRemoteSwiftPackageReference "rasterizer" */;
+			package = 833C828D25E44CFD00D61415 /* XCRemoteSwiftPackageReference "rasterizer" */;
 			productName = Rasterizer;
 		};
 /* End XCSwiftPackageProductDependency section */

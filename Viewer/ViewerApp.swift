@@ -15,9 +15,3 @@ struct ViewerApp: App {
         }
     }
 }
-
-//extension Resolver: ResolverRegistering {
-//    public static func registerAllServices() {
-//
-//    }
-//}

@@ -13,7 +13,7 @@ struct ObjectDetailView: View {
 
     @State private var translate: Vector3 = Vector3(x: 0, y: 0, z: -10)
     @State private var rotate: Bool = true
-    
+
     var body: some View {
         VStack {
             GraphicsViewController(
@@ -21,8 +21,8 @@ struct ObjectDetailView: View {
                 object: object,
                 translate: $translate,
                 rotate: $rotate)
-                .frame(width: 300, height: 300)
-                .cornerRadius(10)
+            .frame(width: 300, height: 300)
+            .cornerRadius(10)
 
             Slider(value: $translate.x, in: -10...10, step: 0.1)
             Text(String(format: "X translate value: %.1f", translate.x))
@@ -36,6 +36,7 @@ struct ObjectDetailView: View {
             Toggle(isOn: $rotate, label: {
                 Text("Rotate")
             })
+
         }.navigationBarTitle(Text(object.name), displayMode: .inline).padding()
         Spacer()
     }

@@ -13,14 +13,13 @@ struct GraphicsViewController : UIViewControllerRepresentable {
 
     var translate: Binding<Vector3>
     var rotate: Binding<Bool>
-  
+
     func makeUIViewController(
             context: UIViewControllerRepresentableContext<GraphicsViewController>
     ) -> UIGraphicsViewController  {
         UIGraphicsViewController(
             width, height,
-            object.indices,
-            object.vertices,
+            object.indices, object.vertices,
             translate, rotate)
     }
 
@@ -39,15 +38,18 @@ class UIGraphicsViewController : UIViewController, DisplayObserver {
     private let indices: [UInt32]
     private let vertices: [Vector3]
 
-    private var zBuffer: CFMutableData
+    private var zBuffer: [Float]
     private var frameBuffer: CFMutableData
 
     private var rotation: Float
-    
     private var translate: Binding<Vector3>
     private var rotate: Binding<Bool>
 
-    init(_ width: Int, _ height: Int, _ indices: [UInt32], _ vertices: [Vector3], _ translate: Binding<Vector3>, _ rotate: Binding<Bool>) {
+    init(_ width: Int, _ height: Int,
+         _ indices: [UInt32],
+         _ vertices: [Vector3],
+         _ translate: Binding<Vector3>,
+         _ rotate: Binding<Bool>) {
         self.width = width
         self.height = height
         let count = width * height
@@ -59,9 +61,7 @@ class UIGraphicsViewController : UIViewController, DisplayObserver {
         frameBuffer = CFDataCreateMutable(kCFAllocatorDefault, frameSize)!
         CFDataSetLength(frameBuffer, frameSize)
 
-        let zBufferSize = MemoryLayout<Float>.size * count
-        zBuffer = CFDataCreateMutable(kCFAllocatorDefault, zBufferSize)!
-        CFDataSetLength(zBuffer, zBufferSize)
+        zBuffer = Array<Float>(repeating: 0, count: count)
 
         rotation = 0
         self.translate = translate
@@ -113,9 +113,7 @@ class UIGraphicsViewController : UIViewController, DisplayObserver {
         rasterize(
             vertices, indices,
             UInt32(indices.count),
-            &mat,
-            CFDataGetMutableBytePtr(zBuffer)
-                .withMemoryRebound(to: Float.self, capacity: width * height) { ptr in ptr },
+            &mat, &zBuffer,
             CFDataGetMutableBytePtr(frameBuffer),
             UInt32(width), UInt32(height))
 
