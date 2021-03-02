@@ -9,22 +9,20 @@ import SwiftUI
 struct ObjectDetailView: View {
     let object: ObjectModel
 
-    @Environment(\.horizontalSizeClass) var sizeClass
+    @EnvironmentObject var orientationInfo: OrientationInfo
+
     @State private var translate: (x: Float, y: Float, z: Float) = (x: 0, y: 0, z: -10)
     @State private var rotate: Bool = true
 
     var body: some View {
-        if sizeClass != .compact {
-        }
-
         GraphicsView(
             object: object,
             translate: $translate,
             rotate: $rotate)
                 .ignoresSafeArea()
-                .navigationBarHidden(sizeClass == .regular)
+                .navigationBarHidden(orientationInfo.orientation == .landscape)
 
-        if sizeClass == .regular {
+        if orientationInfo.orientation == .portrait {
             VStack {
                 Slider(value: $translate.x, in: -10...10, step: 0.1)
                 Text(String(format: "X translate value: %.1f", translate.x))

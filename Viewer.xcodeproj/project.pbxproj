@@ -10,6 +10,7 @@
 		5A4162D8EBAC86C737ACD9AD /* DisplayObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4167CE4B84CE7533B980F8 /* DisplayObservable.swift */; };
 		5A41657B152F5419FA0DEB5C /* GraphicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41695E56DC929CF487AC9C /* GraphicsView.swift */; };
 		5A41684F03D4A6B5522D207B /* ObjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416351710D04F5486A5E35 /* ObjectListView.swift */; };
+		5A416A1F013BF471ED071A49 /* OrientationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416111338B474565C92DBC /* OrientationInfo.swift */; };
 		5A416B199AD2EDF632BF129C /* ObjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416CE03AF328367FF22335 /* ObjectDetailView.swift */; };
 		5A416B44F319E0BE43D3343E /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416C1B50B374C12D74F613 /* ObjectModel.swift */; };
 		5A416B5ABA6812AF78617D59 /* OrientationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41641E7573367B5B3EB941 /* OrientationObserver.swift */; };
@@ -19,11 +20,11 @@
 		833EE42C25D55B85009153C4 /* ViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833EE42B25D55B85009153C4 /* ViewerApp.swift */; };
 		833EE43025D55B87009153C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833EE42F25D55B87009153C4 /* Assets.xcassets */; };
 		833EE43325D55B87009153C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833EE43225D55B87009153C4 /* Preview Assets.xcassets */; };
-		839B95FD25EEAA2400B92040 /* Rasterizer in Frameworks */ = {isa = PBXBuildFile; productRef = 839B95FC25EEAA2400B92040 /* Rasterizer */; };
 		83B1353F25D987910037DE06 /* ObjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1353E25D987910037DE06 /* ObjectListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A416111338B474565C92DBC /* OrientationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrientationInfo.swift; sourceTree = "<group>"; };
 		5A416351710D04F5486A5E35 /* ObjectListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectListView.swift; sourceTree = "<group>"; };
 		5A41641E7573367B5B3EB941 /* OrientationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrientationObserver.swift; sourceTree = "<group>"; };
 		5A41644BE794D4DC42952A4F /* OrientationObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrientationObservable.swift; sourceTree = "<group>"; };
@@ -46,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				839B95FD25EEAA2400B92040 /* Rasterizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +60,7 @@
 				5A416809DF2B325EE470C312 /* DisplayObserver.swift */,
 				5A4167CE4B84CE7533B980F8 /* DisplayObservable.swift */,
 				5A41641E7573367B5B3EB941 /* OrientationObserver.swift */,
+				5A416111338B474565C92DBC /* OrientationInfo.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -155,7 +156,7 @@
 			);
 			name = Viewer;
 			packageProductDependencies = (
-				839B95FC25EEAA2400B92040 /* Rasterizer */,
+				839B95FC25EEAA2400B92040,
 			);
 			productName = Viewer;
 			productReference = 833EE42825D55B85009153C4 /* Viewer.app */;
@@ -185,7 +186,7 @@
 			);
 			mainGroup = 833EE41F25D55B85009153C4;
 			packageReferences = (
-				839B95FB25EEAA2400B92040 /* XCRemoteSwiftPackageReference "rasterizer" */,
+				839B95FB25EEAA2400B92040,
 			);
 			productRefGroup = 833EE42925D55B85009153C4 /* Products */;
 			projectDirPath = "";
@@ -224,6 +225,7 @@
 				5A416E27E9F6336D8388C460 /* DisplayObserver.swift in Sources */,
 				5A4162D8EBAC86C737ACD9AD /* DisplayObservable.swift in Sources */,
 				5A416B5ABA6812AF78617D59 /* OrientationObserver.swift in Sources */,
+				5A416A1F013BF471ED071A49 /* OrientationInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +416,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		839B95FB25EEAA2400B92040 /* XCRemoteSwiftPackageReference "rasterizer" */ = {
+		839B95FB25EEAA2400B92040 = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SchildersChris/rasterizer.git";
 			requirement = {
@@ -425,9 +427,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		839B95FC25EEAA2400B92040 /* Rasterizer */ = {
+		839B95FC25EEAA2400B92040 = {
 			isa = XCSwiftPackageProductDependency;
-			package = 839B95FB25EEAA2400B92040 /* XCRemoteSwiftPackageReference "rasterizer" */;
+			package = 839B95FB25EEAA2400B92040;
 			productName = Rasterizer;
 		};
 /* End XCSwiftPackageProductDependency section */

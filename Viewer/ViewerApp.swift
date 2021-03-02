@@ -12,6 +12,7 @@ struct ViewerApp: App {
     var body: some Scene {
         WindowGroup {
             ObjectListView()
+                    .environmentObject(OrientationInfo())
         }
     }
 }
