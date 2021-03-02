@@ -22,9 +22,9 @@ struct ObjectDetailView: View {
             translate: $translate,
             rotate: $rotate)
                 .ignoresSafeArea()
-                .navigationBarHidden(sizeClass != .compact)
+                .navigationBarHidden(sizeClass == .regular)
 
-        if sizeClass == .compact {
+        if sizeClass == .regular {
             VStack {
                 Slider(value: $translate.x, in: -10...10, step: 0.1)
                 Text(String(format: "X translate value: %.1f", translate.x))
