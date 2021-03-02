@@ -9,18 +9,23 @@ import SwiftUI
 
 struct ObjectListView: View {
     @ObservedObject var viewModel = ObjectListViewModel()
-
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                List(viewModel.objects, id: \.id) { object in
-                    NavigationLink(destination: ObjectDetailView(object: object)) {
-                        Text(object.name)
+        VStack {
+            NavigationView {
+                Group {
+                    List(viewModel.objects, id: \.id) { object in
+                        NavigationLink(destination:
+                        ObjectDetailView(object: object)
+                                .navigationBarTitle(Text(object.name), displayMode: .inline)
+                        ) {
+                            Text(object.name)
+                        }
+                    }.onAppear {
+                        viewModel.loadObjects()
                     }
-                }.onAppear {
-                    viewModel.loadObjects()
-                }
-            }.navigationBarTitle("Objects")
-        }.navigationViewStyle(StackNavigationViewStyle())
+                }.navigationBarTitle("Objects")
+            }.navigationViewStyle(StackNavigationViewStyle())
+        }
     }
 }
