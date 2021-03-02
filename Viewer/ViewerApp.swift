@@ -8,15 +8,7 @@ import UIKit
 import SwiftUI
 
 @main
-struct ViewerApp: App {
-    init() {
-        do {
-            try FileManager.default.removeItem(atPath: NSHomeDirectory()+"/Library/SplashBoard")
-        } catch {
-            print("Failed to delete launch screen cache: \(error)")
-        }
-    }
-        
+struct ViewerApp: App {        
     var body: some Scene {
         WindowGroup {
             ObjectListView()

@@ -19,6 +19,7 @@ struct ObjectListView: View {
                         ObjectDetailView(object: object)
                                 .navigationBarTitle(Text(object.name), displayMode: .inline)
                         ) {
+                            Image(systemName: "move.3d")
                             Text(object.name)
                         }
                     }.onAppear {
