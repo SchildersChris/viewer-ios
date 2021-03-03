@@ -5,25 +5,17 @@
 //  Created by C Apple on 14/02/2021.
 //
 
-import Foundation
 import SwiftUI
 
 final class ObjectListViewModel: ObservableObject {
-    let baseUrl = "https://viewer-app-api.herokuapp.com"
-
-    @Published private(set) var objects: [ObjectModel] = []
+    private let objectService: ObjectService = ObjectService()
+    @Published private(set) var objects: [ObjectInfoModel] = []
 
     func loadObjects() {
-        guard let url = URL(string: baseUrl + "/objects") else { return }
-        URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
-            if let data = data {
-                if let response = try? JSONDecoder().decode([ObjectModel].self, from: data) {
-                    DispatchQueue.main.async {
-                        self.objects = response
-                    }
-                    return
-                }
+        objectService.loadObjects { objects in
+            DispatchQueue.main.async {
+                self.objects = objects
             }
-        }.resume()
+        }
     }
 }

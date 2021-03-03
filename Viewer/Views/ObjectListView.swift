@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ObjectListView: View {
-    @ObservedObject var viewModel = ObjectListViewModel()
+    @ObservedObject private var viewModel = ObjectListViewModel()
     
     var body: some View {
         VStack {
@@ -16,7 +16,7 @@ struct ObjectListView: View {
                 Group {
                     List(viewModel.objects, id: \.id) { object in
                         NavigationLink(destination:
-                        ObjectDetailView(object: object)
+                        ObjectDetailView(id: object.id)
                                 .navigationBarTitle(Text(object.name), displayMode: .inline)
                         ) {
                             Image(systemName: "move.3d")

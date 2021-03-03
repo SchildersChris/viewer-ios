@@ -8,7 +8,7 @@
 import Foundation
 import Rasterizer
 
-final class ObjectModel : Decodable {
+final class ObjectDetailModel: Decodable {
     let id: String
     let name: String
     let vertices: [Vector3]

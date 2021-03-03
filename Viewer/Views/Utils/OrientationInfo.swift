@@ -11,23 +11,18 @@ final class OrientationInfo: ObservableObject {
 
     @Published var orientation: Orientation
 
-    private var _observer: NSObjectProtocol?
+    private var observer: NSObjectProtocol?
 
     init() {
-        // fairly arbitrary starting value for 'flat' orientations
-        if UIDevice.current.orientation.isLandscape {
-            orientation = .landscape
-        }
-        else {
-            orientation = .portrait
-        }
+        orientation =
+                UIDevice.current.orientation.isLandscape
+                ? .landscape : .portrait
 
-        // unowned self because we unregister before self becomes invalid
-        _observer = NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification, object: nil, queue: nil) { [unowned self] note in
+        observer = NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification, object: nil, queue: nil) { [unowned self] note in
             guard let device = note.object as? UIDevice else { return }
 
             if device.orientation.isPortrait &&
-               device.orientation.rawValue == 1 /* Home button at bottom*/ {
+               device.orientation.rawValue == 1 /* Home button at bottom */ {
                 orientation = .portrait
             }
             else if device.orientation.isLandscape {
@@ -37,7 +32,7 @@ final class OrientationInfo: ObservableObject {
     }
 
     deinit {
-        if let observer = _observer {
+        if let observer = observer {
             NotificationCenter.default.removeObserver(observer)
         }
     }

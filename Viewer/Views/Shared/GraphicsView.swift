@@ -7,16 +7,12 @@ import UIKit
 import Rasterizer
 
 struct GraphicsView : UIViewRepresentable {
-    let object: ObjectModel
+    var object: Binding<ObjectDetailModel?>
     let translate: Binding<(x: Float, y: Float, z: Float)>
     let rotate: Binding<Bool>
 
     func makeUIView(context: Context) -> UIGraphicsView  {
-        UIGraphicsView(
-            .zero,
-            object.indices,
-            object.vertices,
-            translate, rotate)
+        UIGraphicsView(.zero, object, translate, rotate)
     }
 
     func updateUIView(_ uiView: UIGraphicsView, context: Context) {}
@@ -24,36 +20,30 @@ struct GraphicsView : UIViewRepresentable {
 
 class UIGraphicsView : UIView, DisplayObserver {
     private let imageView: UIImageView
-    private var displayObservable: DisplayObservable?
+    private let object: Binding<ObjectDetailModel?>
+    private let translate: Binding<(x: Float, y: Float, z: Float)>
+    private let rotate: Binding<Bool>
 
-    private let indices: [UInt32]
-    private let vertices: [Vector3]
+    private var displayObservable: DisplayObservable?
 
     private var zBuffer: [Float]?
     private var frameBuffer: CFMutableData?
     private var width: Int
     private var height: Int
-
     private var rotation: Float
-    private let translate: Binding<(x: Float, y: Float, z: Float)>
-    private let rotate: Binding<Bool>
 
     init(_ frame: CGRect,
-         _ indices: [UInt32],
-         _ vertices: [Vector3],
+         _ object: Binding<ObjectDetailModel?>,
          _ translate: Binding<(x: Float, y: Float, z: Float)>,
          _ rotate: Binding<Bool>) {
         imageView = UIImageView()
-
-        self.indices = indices
-        self.vertices = vertices
-
+        self.object = object
         self.translate = translate
         self.rotate = rotate
 
-        rotation = 0
         width = 0
         height = 0
+        rotation = 0
 
         super.init(frame: frame)
 
@@ -66,7 +56,9 @@ class UIGraphicsView : UIView, DisplayObserver {
     }
 
     deinit {
-        displayObservable?.stop()
+        if let display = displayObservable {
+            display.stop()
+        }
     }
 
     override func layoutSubviews() {
@@ -86,8 +78,9 @@ class UIGraphicsView : UIView, DisplayObserver {
 
     func update(_ deltaTime: CFTimeInterval) {
         guard width != 0 && height != 0 else { return }
+        guard let object = object.wrappedValue else { return }
 
-        if rotate.wrappedValue {
+        if rotate.wrappedValue == true {
             rotation += 1 * Float(deltaTime)
         }
 
@@ -100,8 +93,8 @@ class UIGraphicsView : UIView, DisplayObserver {
 
         let background: UInt8 = traitCollection.userInterfaceStyle == .light ? 255 : 0
         rasterize(
-            vertices, indices,
-            UInt32(indices.count),
+            object.vertices, object.indices,
+            UInt32(object.indices.count),
             &mat, &zBuffer!,
             CFDataGetMutableBytePtr(frameBuffer!),
             background,
