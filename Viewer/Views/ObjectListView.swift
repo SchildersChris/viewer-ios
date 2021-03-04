@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ObjectListView: View {
-    @ObservedObject private var viewModel = ObjectListViewModel()
+    @ObservedObject private var viewModel = ObjectViewModel()
     
     var body: some View {
         VStack {

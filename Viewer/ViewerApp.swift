@@ -8,11 +8,10 @@ import UIKit
 import SwiftUI
 
 @main
-struct ViewerApp: App {        
+struct ViewerApp: App {
     var body: some Scene {
         WindowGroup {
-            ObjectListView()
-                    .environmentObject(OrientationInfo())
+            ObjectListView().environmentObject(OrientationInfo())
         }
     }
 }
