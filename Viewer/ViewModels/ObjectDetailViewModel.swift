@@ -21,9 +21,10 @@ final class ObjectDetailViewModel : ObservableObject {
         }
 
         apiService.fetchById(id: object.id) { o in
-            DispatchQueue.main.async {
-                self.object.vertices = o.vertices
-                self.object.indices = o.indices
+            DispatchQueue.main.async { [self] in
+                object.vertices = o.vertices
+                object.indices = o.indices
+                dataService.store(model: o)
             }
         }
     }

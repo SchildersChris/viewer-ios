@@ -62,7 +62,7 @@ final class ObjectDataService {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Object")
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-        return (try! context.container.viewContext.fetch(fetchRequest)).first as? Object
+        return try? (context.container.viewContext.fetch(fetchRequest).first as? Object)
     }
 
     private func mapToModel(_ o: Object) -> ObjectModel {
@@ -74,8 +74,14 @@ final class ObjectDataService {
     }
 
     private func mapFromModel(_ m: ObjectModel, _ o: Object) {
+        o.id = m.id
         o.name = m.name
-        o.indices = m.indices?.compactMap(Int32.init) as NSArray?
-        o.vertices = m.vertices?.map { Vec3($0.x, $0.y, $0.z) } as NSArray?
+
+        if let indices = m.indices?.compactMap(Int32.init) as NSArray? {
+            o.indices = indices
+        }
+        if let vertices = m.vertices?.map { Vec3($0.x, $0.y, $0.z) } as NSArray? {
+            o.vertices = vertices
+        }
     }
 }

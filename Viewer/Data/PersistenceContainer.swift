@@ -5,7 +5,7 @@
 import CoreData
 
 class PersistenceContainer {
-    static let shared = PersistenceContainer(name: "Viewer")
+    static let shared = PersistenceContainer(name: "Viewer", inMemory: true)
     let container: NSPersistentContainer
 
     init(name: String, inMemory: Bool = false) {

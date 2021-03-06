@@ -2,9 +2,9 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H524" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Object" representedClassName=".Object" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="String"/>
-        <attribute name="indices" attributeType="Transformable" valueTransformerName="" customClassName=".NSArray"/>
+        <attribute name="indices" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName=".NSArray"/>
         <attribute name="name" attributeType="String"/>
-        <attribute name="vertices" attributeType="Transformable" valueTransformerName="" customClassName=".NSArray"/>
+        <attribute name="vertices" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName=".NSArray"/>
     </entity>
     <elements>
         <element name="Object" positionX="-63" positionY="-18" width="128" height="103"/>

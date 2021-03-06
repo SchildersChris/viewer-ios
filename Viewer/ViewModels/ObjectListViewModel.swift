@@ -17,9 +17,10 @@ final class ObjectViewModel : ObservableObject {
             self.objects = objects;
         }
 
-        apiService.fetchAll { objects in
-            DispatchQueue.main.async {
-                self.objects = objects
+        apiService.fetchAll { objs in
+            DispatchQueue.main.async { [self] in
+                objects = objs
+                dataService.store(models: objs)
             }
         }
     }
