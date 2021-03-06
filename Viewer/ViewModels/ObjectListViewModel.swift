@@ -25,7 +25,5 @@ final class ObjectViewModel : ObservableObject {
                 }
             }
         }
-
-
     }
 }
