@@ -7,16 +7,20 @@
 import SwiftUI
 
 struct ObjectDetailView: View {
-    @EnvironmentObject var orientationInfo: OrientationInfo
-    @ObservedObject var object: Object
+    @EnvironmentObject var orientationInfo : OrientationInfo
+    @ObservedObject var viewModel : ObjectDetailViewModel
 
     @State private var translate: (x: Float, y: Float, z: Float) = (x: 0, y: 0, z: -10)
     @State private var rotate: Bool = true
 
+    init(object: ObjectModel) {
+        viewModel = ObjectDetailViewModel(object: object)
+    }
+
     var body: some View {
         Group {
             GraphicsView(
-                object: $object,
+                object: viewModel.object,
                 translate: $translate,
                 rotate: $rotate)
                 .ignoresSafeArea()
@@ -43,6 +47,8 @@ struct ObjectDetailView: View {
                     })
                 }.padding()
             }
+        }.onAppear {
+            viewModel.loadObject()
         }
     }
 }

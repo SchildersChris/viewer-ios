@@ -15,8 +15,7 @@ struct ObjectListView: View {
             NavigationView {
                 Group {
                     List(viewModel.objects, id: \.id) { object in
-                        NavigationLink(destination:
-                        ObjectDetailView(id: object.id)
+                        NavigationLink(destination: ObjectDetailView(object: object)
                                 .navigationBarTitle(Text(object.name), displayMode: .inline)
                         ) {
                             Image(systemName: "move.3d")

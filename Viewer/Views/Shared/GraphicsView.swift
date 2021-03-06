@@ -7,7 +7,7 @@ import UIKit
 import Rasterizer
 
 struct GraphicsView : UIViewRepresentable {
-    var object: Binding<Object>
+    var object: ObjectModel
     let translate: Binding<(x: Float, y: Float, z: Float)>
     let rotate: Binding<Bool>
 
@@ -20,7 +20,7 @@ struct GraphicsView : UIViewRepresentable {
 
 class UIGraphicsView : UIView, DisplayObserver {
     private let imageView: UIImageView
-    private let object: Binding<Object>
+    private let object: ObjectModel
     private let translate: Binding<(x: Float, y: Float, z: Float)>
     private let rotate: Binding<Bool>
 
@@ -33,7 +33,7 @@ class UIGraphicsView : UIView, DisplayObserver {
     private var rotation: Float
 
     init(_ frame: CGRect,
-         _ object: Binding<Object>,
+         _ object: ObjectModel,
          _ translate: Binding<(x: Float, y: Float, z: Float)>,
          _ rotate: Binding<Bool>) {
         imageView = UIImageView()
@@ -77,7 +77,9 @@ class UIGraphicsView : UIView, DisplayObserver {
     }
 
     func update(_ deltaTime: CFTimeInterval) {
-        guard width != 0 && height != 0 else { return }
+        guard width != 0 && height != 0,
+              let indices = object.indices,
+              let vertices = object.vertices else { return }
 
         if rotate.wrappedValue == true {
             rotation += 1 * Float(deltaTime)
@@ -91,9 +93,10 @@ class UIGraphicsView : UIView, DisplayObserver {
             p4: Vector4(x: t.x, y: t.y, z: t.z, w: 1))
 
         let background: UInt8 = traitCollection.userInterfaceStyle == .light ? 255 : 0
+
         rasterize(
-                ($object.wrappedValue.vertices as [Vector3], object.wrappedValue.indices,
-            UInt32(object.wrappedValue.indices.count),
+            vertices, indices,
+            UInt32(indices.count),
             &mat, &zBuffer!,
             CFDataGetMutableBytePtr(frameBuffer!),
             background,
