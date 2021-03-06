@@ -13,15 +13,19 @@ final class ObjectViewModel : ObservableObject {
     @Published private(set) var objects: [ObjectModel] = []
 
     func loadObjects() {
-        if let objects = dataService.fetchAll() {
-            self.objects = objects;
-        }
-
-        apiService.fetchAll { objs in
+        dataService.fetchAll { storeObjs in
             DispatchQueue.main.async { [self] in
-                objects = objs
-                dataService.store(models: objs)
+                self.objects = storeObjs;
+
+                apiService.fetchAll { apiObjs in
+                    DispatchQueue.main.async { [self] in
+                        objects = apiObjs
+                        dataService.syncStore(models: apiObjs)
+                    }
+                }
             }
         }
+
+
     }
 }

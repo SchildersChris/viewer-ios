@@ -9,60 +9,64 @@ import Rasterizer
 final class ObjectDataService {
     private let context: PersistenceContainer = PersistenceContainer.shared
 
-    func fetchAll() -> [ObjectModel]? {
+    func fetchAll(completion: @escaping ([ObjectModel]) -> ()) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Object")
-        let objects = try? (context.container.viewContext.fetch(fetchRequest) as! [Object])
+        let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { [self] asyncResult in
+            completion((asyncResult.finalResult as? [Object])?.map { mapToModel($0) } ?? [])
+        }
 
-        return objects?.map { (o: Object) -> ObjectModel in mapToModel(o) }
+        try! context.container.viewContext.execute(asynchronousFetchRequest)
     }
 
-    func fetchById(id: String) -> ObjectModel? {
-        if let obj = fetchById(id) {
-            return mapToModel(obj)
+    func fetchById(id: String, completion: @escaping (ObjectModel?) -> ()) {
+        fetchById(id) { [self] obj in
+            if let obj = obj {
+                completion(mapToModel(obj))
+            } else {
+              completion(nil)
+            }
         }
-        return nil
     }
 
     func store(model: ObjectModel) {
-        if let obj = fetchById(model.id) {
-            mapFromModel(model, obj)
-        } else {
-            let entity = NSEntityDescription.entity(forEntityName: "Object", in: context.container.viewContext)!
-            let obj = Object(entity: entity, insertInto: context.container.viewContext)
-            mapFromModel(model, obj)
+        fetchById(model.id) { [self] (object: Object?) in
+            if let object = object {
+                mapFromModel(model, object)
+            } else {
+                let entity = NSEntityDescription.entity(forEntityName: "Object", in: context.container.viewContext)!
+                let obj = Object(entity: entity, insertInto: context.container.viewContext)
+                mapFromModel(model, obj)
+            }
+            context.saveContext()
         }
-        context.saveContext()
     }
 
-    func store(models: [ObjectModel]) {
+    func syncStore(models: [ObjectModel]) {
         let ctx = context.container.viewContext
 
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Object")
-        fetchRequest.resultType = .dictionaryResultType
-        fetchRequest.propertiesToFetch = ["id"]
-        let ids = try? (ctx.fetch(fetchRequest) as? [[String:Any]])?
-                .map { $0["id"] as! String }
-
-        let idSet = Set<String>(ids ?? [])
-
-        for model in models {
-            let obj: Object
-            if idSet.contains(model.id) {
-                obj = fetchById(model.id)!
-            } else {
-                let entity = NSEntityDescription.entity(forEntityName: "Object", in: ctx)!
-                obj = Object(entity: entity, insertInto: ctx)
-            }
-            mapFromModel(model, obj)
+        for m in models {
+            store(model: m)
         }
+
+        let deleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Object")
+        deleteRequest.predicate = NSPredicate(format: "not (id in %@)", argumentArray: [Set<String>(models.map { $0.id })])
+
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: deleteRequest)
+        batchDeleteRequest.resultType = .resultTypeObjectIDs
+        try! ctx.execute(batchDeleteRequest)
+
         context.saveContext()
     }
 
-    private func fetchById(_ id: String) -> Object? {
+    private func fetchById(_ id: String, completion: @escaping (Object?) -> ()) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Object")
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-        return try? (context.container.viewContext.fetch(fetchRequest).first as? Object)
+        let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { asyncResult in
+            completion((asyncResult.finalResult as? [Object])?.first)
+        }
+
+        try! context.container.viewContext.execute(asynchronousFetchRequest)
     }
 
     private func mapToModel(_ o: Object) -> ObjectModel {
@@ -80,7 +84,7 @@ final class ObjectDataService {
         if let indices = m.indices?.compactMap(Int32.init) as NSArray? {
             o.indices = indices
         }
-        if let vertices = m.vertices?.map { Vec3($0.x, $0.y, $0.z) } as NSArray? {
+        if let vertices = (m.vertices?.map { Vec3($0.x, $0.y, $0.z) }) as NSArray? {
             o.vertices = vertices
         }
     }

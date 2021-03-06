@@ -15,16 +15,24 @@ final class ObjectDetailViewModel : ObservableObject {
     }
 
     func loadObject() {
-        if let obj = dataService.fetchById(id: object.id) {
-            object.vertices = obj.vertices
-            object.indices = obj.indices
-        }
-
-        apiService.fetchById(id: object.id) { o in
+        dataService.fetchById(id: object.id) { obj in
             DispatchQueue.main.async { [self] in
-                object.vertices = o.vertices
-                object.indices = o.indices
-                dataService.store(model: o)
+                var usingCache = false
+                if let obj = obj, obj.vertices?.count != 0 || obj.indices?.count != 0 {
+                    object.vertices = obj.vertices
+                    object.indices = obj.indices
+                    usingCache = true
+                }
+
+                apiService.fetchById(id: object.id) { o in
+                    DispatchQueue.main.async { [self] in
+                        if !usingCache {
+                            object.vertices = o.vertices
+                            object.indices = o.indices
+                        }
+                        dataService.store(model: o)
+                    }
+                }
             }
         }
     }
