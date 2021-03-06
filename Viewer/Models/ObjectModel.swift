@@ -22,7 +22,7 @@ final class ObjectModel: Decodable {
         case indices
     }
 
-    init(_ id: String, _ name: String, _ vertices: [Vector3], _ indices: [UInt32]) {
+    init(_ id: String, _ name: String, _ vertices: [Vector3]?, _ indices: [UInt32]?) {
         self.id = id
         self.name = name
         self.vertices = vertices

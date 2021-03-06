@@ -70,9 +70,17 @@ final class ObjectDataService {
     }
 
     private func mapToModel(_ o: Object) -> ObjectModel {
-        ObjectModel(
-            o.id!, o.name!,
-            (o.vertices as? [Vec3])?.map { Vector3(x: $0.x, y: $0.y, z: $0.z)} ?? [],
+        var vecArr = Array<Vector3>()
+        if let verts = o.vertices as? [Float] {
+            let vertCount = verts.count / 3 - 1
+            for i in 0...vertCount {
+                let idx = i * 3
+                vecArr.append(Vector3(x: verts[idx], y: verts[idx+1], z: verts[idx+2]))
+            }
+        }
+
+        return ObjectModel(
+            o.id!, o.name!, vecArr,
             (o.indices as? [Int32])?.compactMap(UInt32.init) ?? []
         )
     }
@@ -84,7 +92,7 @@ final class ObjectDataService {
         if let indices = m.indices?.compactMap(Int32.init) as NSArray? {
             o.indices = indices
         }
-        if let vertices = (m.vertices?.map { Vec3($0.x, $0.y, $0.z) }) as NSArray? {
+        if let vertices = (m.vertices?.flatMap { [$0.x, $0.y, $0.z] }) as NSArray? {
             o.vertices = vertices
         }
     }

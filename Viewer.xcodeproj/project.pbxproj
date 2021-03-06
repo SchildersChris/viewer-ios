@@ -8,18 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5A4162D8EBAC86C737ACD9AD /* DisplayObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4167CE4B84CE7533B980F8 /* DisplayObservable.swift */; };
-		5A4163DD4920D94FF712DA67 /* UInt32ValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416B8695FF9ACB71133CC5 /* UInt32ValueTransformer.swift */; };
 		5A41657B152F5419FA0DEB5C /* GraphicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41695E56DC929CF487AC9C /* GraphicsView.swift */; };
 		5A4165868F06E388B1345622 /* ObjectApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416F49900005FE0A8DCF26 /* ObjectApiService.swift */; };
 		5A4167E2226F634E250AABF6 /* PersistenceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4162FE73921DA587619EF3 /* PersistenceContainer.swift */; };
 		5A41684F03D4A6B5522D207B /* ObjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416351710D04F5486A5E35 /* ObjectListView.swift */; };
-		5A416850D876591FF00C535C /* Vec3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416F5A5CEEA6FA4794BD18 /* Vec3.swift */; };
 		5A41689ADDF70D55B93CAA8E /* ObjectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416438A289A18D528B1D29 /* ObjectDetailViewModel.swift */; };
 		5A416A1F013BF471ED071A49 /* OrientationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416111338B474565C92DBC /* OrientationInfo.swift */; };
 		5A416ADC6F44C6644BE1AFA9 /* ObjectDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416F925E703DFB209F5443 /* ObjectDataService.swift */; };
 		5A416B199AD2EDF632BF129C /* ObjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416CE03AF328367FF22335 /* ObjectDetailView.swift */; };
 		5A416D0BF72B2205427542DE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5A416B4779BFD9ED9E0A22D6 /* .gitignore */; };
-		5A416E14DCA046F4E787906E /* Vec3ValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41679FC6E446F414BF950B /* Vec3ValueTransformer.swift */; };
 		5A416E27E9F6336D8388C460 /* DisplayObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416809DF2B325EE470C312 /* DisplayObserver.swift */; };
 		83141B1325EF1BB100419060 /* Viewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83141B1125EF1BB100419060 /* Viewer.xcdatamodeld */; };
 		83141B3325EF364E00419060 /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83141B3225EF364E00419060 /* ObjectModel.swift */; };
@@ -34,15 +31,12 @@
 		5A4162FE73921DA587619EF3 /* PersistenceContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceContainer.swift; sourceTree = "<group>"; };
 		5A416351710D04F5486A5E35 /* ObjectListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectListView.swift; sourceTree = "<group>"; };
 		5A416438A289A18D528B1D29 /* ObjectDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetailViewModel.swift; sourceTree = "<group>"; };
-		5A41679FC6E446F414BF950B /* Vec3ValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec3ValueTransformer.swift; sourceTree = "<group>"; };
 		5A4167CE4B84CE7533B980F8 /* DisplayObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayObservable.swift; sourceTree = "<group>"; };
 		5A416809DF2B325EE470C312 /* DisplayObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayObserver.swift; sourceTree = "<group>"; };
 		5A41695E56DC929CF487AC9C /* GraphicsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsView.swift; sourceTree = "<group>"; };
 		5A416B4779BFD9ED9E0A22D6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
-		5A416B8695FF9ACB71133CC5 /* UInt32ValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UInt32ValueTransformer.swift; sourceTree = "<group>"; };
 		5A416CE03AF328367FF22335 /* ObjectDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetailView.swift; sourceTree = "<group>"; };
 		5A416F49900005FE0A8DCF26 /* ObjectApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectApiService.swift; sourceTree = "<group>"; };
-		5A416F5A5CEEA6FA4794BD18 /* Vec3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec3.swift; sourceTree = "<group>"; };
 		5A416F925E703DFB209F5443 /* ObjectDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDataService.swift; sourceTree = "<group>"; };
 		83141B1225EF1BB100419060 /* Viewer.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = Viewer.xcdatamodel; sourceTree = "<group>"; };
 		83141B3225EF364E00419060 /* ObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
@@ -84,29 +78,10 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		5A416245027B67541154134A /* Transformers */ = {
-			isa = PBXGroup;
-			children = (
-				5A41679FC6E446F414BF950B /* Vec3ValueTransformer.swift */,
-				5A416B8695FF9ACB71133CC5 /* UInt32ValueTransformer.swift */,
-			);
-			path = Transformers;
-			sourceTree = "<group>";
-		};
-		5A4162BE31E64A1105C0F763 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				5A416F5A5CEEA6FA4794BD18 /* Vec3.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
 		5A416B8FAA4398D79CD8FD81 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				5A4162FE73921DA587619EF3 /* PersistenceContainer.swift */,
-				5A4162BE31E64A1105C0F763 /* Entities */,
-				5A416245027B67541154134A /* Transformers */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -278,9 +253,6 @@
 				5A4165868F06E388B1345622 /* ObjectApiService.swift in Sources */,
 				5A416ADC6F44C6644BE1AFA9 /* ObjectDataService.swift in Sources */,
 				5A4167E2226F634E250AABF6 /* PersistenceContainer.swift in Sources */,
-				5A416850D876591FF00C535C /* Vec3.swift in Sources */,
-				5A416E14DCA046F4E787906E /* Vec3ValueTransformer.swift in Sources */,
-				5A4163DD4920D94FF712DA67 /* UInt32ValueTransformer.swift in Sources */,
 				5A41689ADDF70D55B93CAA8E /* ObjectDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
