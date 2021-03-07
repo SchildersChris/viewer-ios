@@ -21,11 +21,11 @@ struct ObjectListView: View {
                             Image(systemName: "move.3d")
                             Text(object.name)
                         }
-                    }.onAppear {
-                        viewModel.loadObjects()
                     }
                 }.navigationBarTitle("Objects")
             }.navigationViewStyle(StackNavigationViewStyle())
+        }.onAppear {
+            viewModel.loadObjects()
         }
     }
 }

@@ -5,9 +5,14 @@
 import CoreData
 
 class PersistenceContainer {
-    public static var shared = PersistenceContainer(name: "Viewer", inMemory: true)
+    public static var shared = PersistenceContainer(name: "Viewer", inMemory: false)
 
-    let container: NSPersistentContainer
+    private let container: NSPersistentContainer
+    var context: NSManagedObjectContext {
+        get {
+            container.viewContext
+        }
+    }
 
     init(name: String, inMemory: Bool = false) {
         container = NSPersistentContainer(name: name)
@@ -34,7 +39,16 @@ class PersistenceContainer {
         })
     }
 
-    func saveContext () {
+    func execute(_ request: NSPersistentStoreRequest) -> NSPersistentStoreResult {
+        do {
+            return try context.execute(request)
+        } catch {
+            let error = error as NSError
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
+
+    func saveContext() {
         let context = container.viewContext
         if context.hasChanges {
             do {

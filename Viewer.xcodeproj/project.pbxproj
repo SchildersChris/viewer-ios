@@ -23,6 +23,7 @@
 		833EE42C25D55B85009153C4 /* ViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833EE42B25D55B85009153C4 /* ViewerApp.swift */; };
 		833EE43025D55B87009153C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833EE42F25D55B87009153C4 /* Assets.xcassets */; };
 		833EE43325D55B87009153C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833EE43225D55B87009153C4 /* Preview Assets.xcassets */; };
+		83883EA525F4F12D007F82F0 /* Rasterizer in Frameworks */ = {isa = PBXBuildFile; productRef = 833C721B25EF171000AA0CC7 /* Rasterizer */; };
 		83B1353F25D987910037DE06 /* ObjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1353E25D987910037DE06 /* ObjectListViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83883EA525F4F12D007F82F0 /* Rasterizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,7 +183,7 @@
 			);
 			name = Viewer;
 			packageProductDependencies = (
-				833C721B25EF171000AA0CC7,
+				833C721B25EF171000AA0CC7 /* Rasterizer */,
 			);
 			productName = Viewer;
 			productReference = 833EE42825D55B85009153C4 /* Viewer.app */;
@@ -195,6 +197,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
+				ORGANIZATIONNAME = avans;
 				TargetAttributes = {
 					833EE42725D55B85009153C4 = {
 						CreatedOnToolsVersion = 12.4;
@@ -211,7 +214,7 @@
 			);
 			mainGroup = 833EE41F25D55B85009153C4;
 			packageReferences = (
-				833C721A25EF171000AA0CC7,
+				833C721A25EF171000AA0CC7 /* XCRemoteSwiftPackageReference "rasterizer" */,
 			);
 			productRefGroup = 833EE42925D55B85009153C4 /* Products */;
 			projectDirPath = "";
@@ -294,8 +297,10 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Avans;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -356,8 +361,10 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Avans;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -444,7 +451,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		833C721A25EF171000AA0CC7 = {
+		833C721A25EF171000AA0CC7 /* XCRemoteSwiftPackageReference "rasterizer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SchildersChris/rasterizer.git";
 			requirement = {
@@ -455,9 +462,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		833C721B25EF171000AA0CC7 = {
+		833C721B25EF171000AA0CC7 /* Rasterizer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 833C721A25EF171000AA0CC7;
+			package = 833C721A25EF171000AA0CC7 /* XCRemoteSwiftPackageReference "rasterizer" */;
 			productName = Rasterizer;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -15,7 +15,7 @@ final class ObjectDataService {
             completion((asyncResult.finalResult as? [Object])?.map { mapToModel($0) } ?? [])
         }
 
-        try! context.container.viewContext.execute(asynchronousFetchRequest)
+        _ = context.execute(asynchronousFetchRequest)
     }
 
     func fetchById(id: String, completion: @escaping (ObjectModel?) -> ()) {
@@ -33,8 +33,8 @@ final class ObjectDataService {
             if let object = object {
                 mapFromModel(model, object)
             } else {
-                let entity = NSEntityDescription.entity(forEntityName: "Object", in: context.container.viewContext)!
-                let obj = Object(entity: entity, insertInto: context.container.viewContext)
+                let entity = NSEntityDescription.entity(forEntityName: "Object", in: context.context)!
+                let obj = Object(entity: entity, insertInto: context.context)
                 mapFromModel(model, obj)
             }
             context.saveContext()
@@ -42,8 +42,6 @@ final class ObjectDataService {
     }
 
     func syncStore(models: [ObjectModel]) {
-        let ctx = context.container.viewContext
-
         for m in models {
             store(model: m)
         }
@@ -53,7 +51,7 @@ final class ObjectDataService {
 
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: deleteRequest)
         batchDeleteRequest.resultType = .resultTypeObjectIDs
-        try! ctx.execute(batchDeleteRequest)
+        _ = context.execute(batchDeleteRequest)
 
         context.saveContext()
     }
@@ -66,7 +64,7 @@ final class ObjectDataService {
             completion((asyncResult.finalResult as? [Object])?.first)
         }
 
-        try! context.container.viewContext.execute(asynchronousFetchRequest)
+        _ = context.execute(asynchronousFetchRequest)
     }
 
     private func mapToModel(_ o: Object) -> ObjectModel {
