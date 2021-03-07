@@ -10,9 +10,9 @@ final class ObjectDataService {
     private let context: PersistenceContainer = PersistenceContainer.shared
 
     func fetchAll(completion: @escaping ([ObjectModel]) -> ()) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Object")
+        let fetchRequest = NSFetchRequest<Object>(entityName: "Object")
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { [self] asyncResult in
-            completion((asyncResult.finalResult as? [Object])?.map { mapToModel($0) } ?? [])
+            completion((asyncResult.finalResult)?.map { mapToModel($0) } ?? [])
         }
 
         _ = context.execute(asynchronousFetchRequest)
@@ -57,11 +57,11 @@ final class ObjectDataService {
     }
 
     private func fetchById(_ id: String, completion: @escaping (Object?) -> ()) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Object")
+        let fetchRequest = NSFetchRequest<Object>(entityName: "Object")
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { asyncResult in
-            completion((asyncResult.finalResult as? [Object])?.first)
+            completion((asyncResult.finalResult)?.first)
         }
 
         _ = context.execute(asynchronousFetchRequest)
