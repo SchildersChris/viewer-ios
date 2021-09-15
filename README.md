@@ -1,2 +1,2 @@
 # viewer-ios
-3d Object viewer ios-app
+Avans Hogeschool IOS assignment a 3d Object viewer for IOS
